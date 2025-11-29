@@ -6,8 +6,8 @@ It supports start, stop, reset, millisecond accuracy, and previous-record saving
 ---
 
 ## 📸 Preview  
-*(Replace this with your actual screenshot)*  
-![Stopwatch Preview](stopwatch-preview.png)
+<img width="1919" height="908" alt="image" src="https://github.com/user-attachments/assets/5fdf6c93-c4ed-4e63-a87b-677fdf0dc7c0" />
+
 
 ---
 
