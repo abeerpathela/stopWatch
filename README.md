@@ -5,21 +5,26 @@ It supports start, stop, reset, millisecond accuracy, and previous-record saving
 
 ---
 
-## 📸 Preview  
-<img width="1919" height="908" alt="image" src="https://github.com/user-attachments/assets/5fdf6c93-c4ed-4e63-a87b-677fdf0dc7c0" />
+## 🔗 Live Demo  
+👉 **https://stop-watch-cplh.vercel.app/**
 
+---
+
+## 📸 Preview  
+
+![alt text](image.png)
 
 ---
 
 ## 🌟 Features
 
-- 🟢 **Start**, 🟡 **Stop**, 🔴 **Reset** buttons  
-- ⏱️ **Millisecond-level stopwatch**  
-- 📝 Saves every stopped time into a list  
-- 🧹 Reset clears both timer and saved records  
+- 🟢 **Start**, 🟡 **Stop**, 🔴 **Reset** controls  
+- ⏱️ Millisecond-precision timing  
+- 📝 Automatically saves each stopped timing  
+- 🧹 Reset clears timer + saved history  
 - 🎨 Tailwind CSS styling  
-- 📱 Fully responsive  
-- ⚡ Smooth interval updates (10ms)
+- 📱 Fully responsive layout  
+- ⚡ Smooth updates using 10ms intervals  
 
 ---
 
@@ -27,7 +32,7 @@ It supports start, stop, reset, millisecond accuracy, and previous-record saving
 
 - **HTML5** — Structure  
 - **Tailwind CSS** — Styling  
-- **JavaScript** — Timer functionality & DOM updates  
+- **JavaScript** — Timer logic  
 
 ---
 
@@ -47,18 +52,18 @@ Copy code
 ### 🏃 Start Timer
 ```js
 timerId = setInterval(startTimer, 10);
-✋ Stop Timer (also saves record)
+✋ Stop Timer + Save Time
 js
 Copy code
 clearInterval(timerId);
 timerId = null;
 progressSave(timerDisplay.innerText);
-🔁 Reset Timer + Clear Records
+🔁 Reset Everything
 js
 Copy code
 clearProgressSave();
 timerDisplay.innerHTML = "00:00:00";
-⏱️ Timer Logic (10ms interval)
+⏱️ Timer Logic (Runs every 10ms)
 js
 Copy code
 millisecond++;
@@ -80,10 +85,10 @@ bash
 Copy code
 cd stopWatch
 3️⃣ Run the project
-Open index.html in your browser.
+Open index.html in any browser.
 
 🤝 Contributing
-PRs and suggestions are welcome!
+Feel free to open issues or submit PRs!
 
 👨‍💻 Author
 Made with ❤️ by Abeer Pathela
@@ -93,11 +98,11 @@ Copy code
 
 ---
 
-If you want, I can also:
+If you’d like, I can also add:
 
-🎨 Add screenshot  
-🏷️ Add badges  
-✨ Add a colorful design  
-📦 Add more documentation  
+✔️ Screenshot section  
+✔️ Badges  
+✔️ GIF preview demo  
+✔️ Feature icons  
 
 Just tell me!
