@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="h-screen w-screen flex justify-center items-center">
+        <div class="space-y-6 bg-gray-800 p-10 rounded-2xl shadow-2xl">
+            
+            <div class="flex items-center justify-center">
+                <p id="timer-display" class="text-5xl font-bold tracking-widest">00:00:00</p>
+            </div>
+
+            <div id="buttons" class="flex gap-6 justify-center">
+                <button id="resetButton" class="px-5 py-2 bg-red-600 hover:bg-red-700 rounded-lg font-semibold shadow-md transition">reset</button>
+                <button id="startButton" class="px-5 py-2 bg-green-600 hover:bg-green-700 rounded-lg font-semibold shadow-md transition">start</button>
+                <button id="stopButton" class="px-5 py-2 bg-yellow-500 hover:bg-yellow-600 rounded-lg font-semibold shadow-md transition">stop</button>
+            </div>
+
+            <div class="pt-4">
+                <ul id="previousTimingRecord" class="flex flex-col justify-center items-center gap-2 text-lg"></ul>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const timerDisplay=document.querySelector("#timer-display");
+        const resetButton=document.querySelector("#resetButton");
+        const startButton=document.querySelector("#startButton");
+        const stopButton=document.querySelector("#stopButton");
+        const previousTimingRecord=document.querySelector("#previousTimingRecord");
+        let millisecond=0;
+        let second=0;
+        let minute=0;
+        let timerId=null;
+
+        function startTimer(){
+            millisecond++;
+            if(millisecond==100){
+                millisecond=0;
+                second++;
+                if(second==60){
+                    second=0;
+                    minute++;
+                }
+            }
+            let millisecondString=millisecond<10?`0${millisecond}`:`${millisecond}`;
+            let secondString=second<10?`0${second}`:`${second}`;
+            let minuteString=minute<10?`0${minute}`:`${minute}`;
+            timerDisplay.innerText=`${minuteString}:${secondString}:${millisecondString}`;
+        }
+        function clearProgressSave(){
+            let length=previousTimingRecord.length;
+            while(previousTimingRecord.firstChild){
+                previousTimingRecord.removeChild(previousTimingRecord.firstChild);
+            }
+        }
+        function progressSave(progress){
+            let listItem=document.createElement('li');
+            listItem.innerHTML=`${progress}`;
+            listItem.className = "bg-gray-700 px-4 py-1 rounded-md shadow-md"; /* styling added */
+            previousTimingRecord.appendChild(listItem);
+        }
+        startButton.addEventListener('click',()=>{
+            if(timerId===null){
+                timerId=setInterval(startTimer,10);
+            }
+        })
+        stopButton.addEventListener('click',()=>{
+            clearInterval(timerId);
+            timerId=null;
+            progressSave(timerDisplay.innerText);
+        })
+        resetButton.addEventListener('click',()=>{
+            clearInterval(timerId);
+            timerId=null;
+            millisecond=0;
+            second=0;
+            minute=0;
+            clearProgressSave();
+            timerDisplay.innerHTML=`00:00:00`;
+        })
+    </script>
+</body>
+</html>
